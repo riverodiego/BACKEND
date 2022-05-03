@@ -1,0 +1,34 @@
+<h1>Vista de productos</h1>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Foto</th>
+        </tr>
+    </thead>
+    {{#if productos }}
+            <tbody>
+                {{#each productos}} 
+                    <tr> 
+                        <th scope="row"> {{@index}} </th> 
+                        <td> {{this.nombre}} </td> 
+                        <td> $ {{this.precio}} </td> 
+                        <td> <img srcset={{this.foto_url}} width="50" height="60"> </td>
+                    </tr>
+                {{/each}} 
+            </tbody>
+        </table>
+    {{else}}
+        </table>
+        <div class="alert alert-info text-center" role="alert">
+            No Hay Productos...
+        </div>
+    {{/if}}
+<button class="btn btn-primary" type="button">
+    <a href="/" class="text-reset text-decoration-none">Cargar productos</a>
+</button>    
+<button class="btn btn-danger" type="button">
+    <a href="/borrar" class="text-reset text-decoration-none">Borrar productos</a>
+</button>

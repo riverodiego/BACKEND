@@ -1,0 +1,522 @@
+## Desafio 08 - MongoDB
+
+### **CONSIGNA**
+
+> use ecommerce
+switched to db ecommerce
+> db.createCollection("mensajes")
+{ "ok" : 1 }
+> db.createCollection("productos")
+{ "ok" : 1 }
+> show dbs
+admin      0.000GB
+config     0.000GB
+ecommerce  0.000GB
+local      0.000GB
+test       0.000GB
+> show collections
+mensajes
+productos
+>
+
+### **PUNTO 1) y 2)** Agrego 10 documentos a las colecciones mensajes y productos.
+
+> db.productos.insert(
+... [{nombre: "anotador", precio: 190, foto_url: "https://cdn3.iconfinder.com/data/icons/education-209/64/paper-clip-academic-note-exam-128.png"}, {nombre: "mochila", precio: 3559, foto_url: "https://cdn3.iconfinder.com/data/icons/education-209/64/bag-pack-container-school-128.png"}, {nombre: "Lapiz", precio: 120, foto_url: "https://cdn4.iconfinder.com/data/icons/to-cool-for-school/512/pencil-128.png"}, {nombre: "calculadora", precio: 1590, foto_url: "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-128.png"}, {nombre: "escuadra", precio: 1890, foto_url: "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png"}, {nombre: "pizarron", precio: 4990, foto_url: "https://cdn3.iconfinder.com/data/icons/education-209/64/board-math-class-school-128.png"}, {nombre: "regla", precio: 3300, foto_url: "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png"}, {nombre: "cuaderno", precio: 2800, foto_url: "https://cdn3.iconfinder.com/data/icons/education-209/64/book-note-paper-school-128.png"},
+... ... {nombre: "reloj-despertador", precio: 3900, foto_url: "https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png"}, {nombre: "Tijera", precio: 1900, foto_url: "https://cdn4.iconfinder.com/data/icons/to-cool-for-school/512/opened-scissor-128.png"}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 10,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+
+> db.mensajes.insert([{email: "ciente@gmail.com", fecha: ISODate(), mensaje: "Hola, buen dia"}, {email: "cliente@gmail.com", fecha: ISODate(), mensaje: "Queria consultar que color de tijeras tienen"}, {email: "vendedor@gmail.com", fecha: ISODate(), mensaje: "Buenos dias."}, {email: "vendedor@gmail.com", fecha: ISODate(), mensaje: "tenemos color verde, rojo y amarillo"}, {email: "cliente@gmail.com", fecha: ISODate(), mensaje: "Gracias, cuanto cuestan y que tamaño tienen"}, {email: "vendedor@gmail.com", fecha: ISODate(), mensaje: "tenemos las chicas a $ 75.33 y las grandes a $ 125.33"}, {email: "cliente@gmail.com", fecha: ISODate(), mensaje: "Ok. Tenes stock de cuadernos?"}, {email: "vendedor@gmail.com", fecha: ISODate(), mensaje: "Claro que si, tenemos stock"},
+... ... {email: "cliente@gmail.com", fecha: ISODate(), mensaje: "Ok. Muchas gracias por la atencion"}, {email: "vendedor@gmail.com", fecha: ISODate(), mensaje: "A usted por comunicarse. Saludos y buenos dias."}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 10,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+
+### **PUNTO 3)** Listar los documentos de cada coleccion
+
+> db.productos.find().pretty()
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f5"),
+        "nombre" : "anotador",
+        "precio" : 190,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/paper-clip-academic-note-exam-128.png"
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f6"),
+        "nombre" : "mochila",
+        "precio" : 3559,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/bag-pack-container-school-128.png"
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f7"),
+        "nombre" : "Lapiz",
+        "precio" : 120,
+        "foto_url" : "https://cdn4.iconfinder.com/data/icons/to-cool-for-school/512/pencil-128.png"
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f8"),
+        "nombre" : "calculadora",
+        "precio" : 1590,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-128.png"
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f9"),
+        "nombre" : "escuadra",
+        "precio" : 1890,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png"
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fa"),
+        "nombre" : "pizarron",
+        "precio" : 4990,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/board-math-class-school-128.png"
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fb"),
+        "nombre" : "regla",
+        "precio" : 3300,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png"
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fc"),
+        "nombre" : "cuaderno",
+        "precio" : 2800,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/book-note-paper-school-128.png"
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fd"),
+        "nombre" : "reloj-despertador",
+        "precio" : 3900,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png"
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fe"),
+        "nombre" : "Tijera",
+        "precio" : 1900,
+        "foto_url" : "https://cdn4.iconfinder.com/data/icons/to-cool-for-school/512/opened-scissor-128.png"
+}
+
+> db.mensajes.find().pretty()
+{
+        "_id" : ObjectId("6224f8bf8d4127e45a65e8ff"),
+        "email" : "ciente@gmail.com",
+        "fecha" : ISODate("2022-03-06T18:09:03.002Z"),
+        "mensaje" : "Hola, buen dia"
+}
+{
+        "_id" : ObjectId("6224f8bf8d4127e45a65e900"),
+        "email" : "cliente@gmail.com",
+        "fecha" : ISODate("2022-03-06T18:09:03.002Z"),
+        "mensaje" : "Queria consultar que color de tijeras tienen"
+}
+{
+        "_id" : ObjectId("6224f8bf8d4127e45a65e901"),
+        "email" : "vendedor@gmail.com",
+        "fecha" : ISODate("2022-03-06T18:09:03.002Z"),
+        "mensaje" : "Buenos dias."
+}
+{
+        "_id" : ObjectId("6224f8bf8d4127e45a65e902"),
+        "email" : "vendedor@gmail.com",
+        "fecha" : ISODate("2022-03-06T18:09:03.002Z"),
+        "mensaje" : "tenemos color verde, rojo y amarillo"
+}
+{
+        "_id" : ObjectId("6224f8bf8d4127e45a65e903"),
+        "email" : "cliente@gmail.com",
+        "fecha" : ISODate("2022-03-06T18:09:03.002Z"),
+        "mensaje" : "Gracias, cuanto cuestan y que tamaño tienen"
+}
+{
+        "_id" : ObjectId("6224f8bf8d4127e45a65e904"),
+        "email" : "vendedor@gmail.com",
+        "fecha" : ISODate("2022-03-06T18:09:03.002Z"),
+        "mensaje" : "tenemos las chicas a $ 75.33 y las grandes a $ 125.33"
+}
+{
+        "_id" : ObjectId("6224f8bf8d4127e45a65e905"),
+        "email" : "cliente@gmail.com",
+        "fecha" : ISODate("2022-03-06T18:09:03.002Z"),
+        "mensaje" : "Ok. Tenes stock de cuadernos?"
+}
+{
+        "_id" : ObjectId("6224f8bf8d4127e45a65e906"),
+        "email" : "vendedor@gmail.com",
+        "fecha" : ISODate("2022-03-06T18:09:03.002Z"),
+        "mensaje" : "Claro que si, tenemos stock"
+}
+{
+        "_id" : ObjectId("6224f8bf8d4127e45a65e907"),
+        "email" : "cliente@gmail.com",
+        "fecha" : ISODate("2022-03-06T18:09:03.002Z"),
+        "mensaje" : "Ok. Muchas gracias por la atencion"
+}
+{
+        "_id" : ObjectId("6224f8bf8d4127e45a65e908"),
+        "email" : "vendedor@gmail.com",
+        "fecha" : ISODate("2022-03-06T18:09:03.002Z"),
+        "mensaje" : "A usted por comunicarse. Saludos y buenos dias."
+}
+
+### **PUNTO 4)** Mostrar la cantidad de documentos en cada coleccion
+
+> db.productos.estimatedDocumentCount()
+10
+> db.mensajes.estimatedDocumentCount()
+10
+>
+
+### **PUNTO 5)** CRUD sobre la coleccion de productos.
+
+***************** 5.a) **********************
+
+> db.productos.insertOne({nombre: "paleta de acuarelas", precio: 1364, foto_url: "https://cdn0.iconfinder.com/data/icons/education-794/512/Paint-128.png"})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("622531f2defd56221ba90928")
+}
+
+***************** 5.b) **********************
+
+> db.productos.find({nombre: "regla"}).pretty()
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fb"),
+        "nombre" : "regla",
+        "precio" : 3300,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png"
+}
+
+***************** 5.b.i) **********************
+
+> db.productos.find({"precio": {$lt: 1000}}).pretty()
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f5"),
+        "nombre" : "anotador",
+        "precio" : 190,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/paper-clip-academic-note-exam-128.png"
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f7"),
+        "nombre" : "Lapiz",
+        "precio" : 120,
+        "foto_url" : "https://cdn4.iconfinder.com/data/icons/to-cool-for-school/512/pencil-128.png"
+}
+
+***************** 5.b.ii) **********************
+
+> db.productos.find({"precio": {$gt: 1000, $lt: 3000}}).pretty()
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f8"),
+        "nombre" : "calculadora",
+        "precio" : 1590,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-128.png"
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f9"),
+        "nombre" : "escuadra",
+        "precio" : 1890,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png"
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fc"),
+        "nombre" : "cuaderno",
+        "precio" : 2800,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/book-note-paper-school-128.png"
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fe"),
+        "nombre" : "Tijera",
+        "precio" : 1900,
+        "foto_url" : "https://cdn4.iconfinder.com/data/icons/to-cool-for-school/512/opened-scissor-128.png"
+}
+{
+        "_id" : ObjectId("622531f2defd56221ba90928"),
+        "nombre" : "paleta de acuarelas",
+        "precio" : 1364,
+        "foto_url" : "https://cdn0.iconfinder.com/data/icons/education-794/512/Paint-128.png"
+}
+
+***************** 5.b.iii) **********************
+
+> db.productos.find({"precio": {$gt: 3000}}).pretty()
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f6"),
+        "nombre" : "mochila",
+        "precio" : 3559,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/bag-pack-container-school-128.png"
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fa"),
+        "nombre" : "pizarron",
+        "precio" : 4990,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/board-math-class-school-128.png"
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fb"),
+        "nombre" : "regla",
+        "precio" : 3300,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png"
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fd"),
+        "nombre" : "reloj-despertador",
+        "precio" : 3900,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png"
+}
+
+***************** 5.b.iv) **********************
+
+> db.productos.find().sort({precio: 1}).skip(2).limit(1).pretty()
+{
+        "_id" : ObjectId("622531f2defd56221ba90928"),
+        "nombre" : "paleta de acuarelas",
+        "precio" : 1364,
+        "foto_url" : "https://cdn0.iconfinder.com/data/icons/education-794/512/Paint-128.png"
+}
+
+***************** 5.c) **********************
+
+> db.productos.updateMany({}, {$set: {"stock": 100}})
+{ "acknowledged" : true, "matchedCount" : 11, "modifiedCount" : 11 }
+> db.productos.find().pretty()
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f5"),
+        "nombre" : "anotador",
+        "precio" : 190,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/paper-clip-academic-note-exam-128.png",
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f6"),
+        "nombre" : "mochila",
+        "precio" : 3559,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/bag-pack-container-school-128.png",
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f7"),
+        "nombre" : "Lapiz",
+        "precio" : 120,
+        "foto_url" : "https://cdn4.iconfinder.com/data/icons/to-cool-for-school/512/pencil-128.png",
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f8"),
+        "nombre" : "calculadora",
+        "precio" : 1590,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-128.png",
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f9"),
+        "nombre" : "escuadra",
+        "precio" : 1890,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png",
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fa"),
+        "nombre" : "pizarron",
+        "precio" : 4990,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/board-math-class-school-128.png",
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fb"),
+        "nombre" : "regla",
+        "precio" : 3300,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png",
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fc"),
+        "nombre" : "cuaderno",
+        "precio" : 2800,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/book-note-paper-school-128.png",
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fd"),
+        "nombre" : "reloj-despertador",
+        "precio" : 3900,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png",
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fe"),
+        "nombre" : "Tijera",
+        "precio" : 1900,
+        "foto_url" : "https://cdn4.iconfinder.com/data/icons/to-cool-for-school/512/opened-scissor-128.png",
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("622531f2defd56221ba90928"),
+        "nombre" : "paleta de acuarelas",
+        "precio" : 1364,
+        "foto_url" : "https://cdn0.iconfinder.com/data/icons/education-794/512/Paint-128.png",
+        "stock" : 100
+}
+
+***************** 5.d) **********************
+
+> db.productos.updateMany({"precio": {$gt: 4000}}, {$set: {"stock": 0}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.productos.find({"precio": {$gt: 4000}}).pretty()
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fa"),
+        "nombre" : "pizarron",
+        "precio" : 4990,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/board-math-class-school-128.png",
+        "stock" : 0
+}
+
+***************** 5.e) **********************
+
+> db.productos.deleteMany({"precio": {$lt: 1000}})
+{ "acknowledged" : true, "deletedCount" : 2 }
+> db.productos.find().pretty()
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f6"),
+        "nombre" : "mochila",
+        "precio" : 3559,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/bag-pack-container-school-128.png",
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f8"),
+        "nombre" : "calculadora",
+        "precio" : 1590,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-128.png",
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8f9"),
+        "nombre" : "escuadra",
+        "precio" : 1890,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png",
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fa"),
+        "nombre" : "pizarron",
+        "precio" : 4990,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/board-math-class-school-128.png",
+        "stock" : 0
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fb"),
+        "nombre" : "regla",
+        "precio" : 3300,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png",
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fc"),
+        "nombre" : "cuaderno",
+        "precio" : 2800,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/book-note-paper-school-128.png",
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fd"),
+        "nombre" : "reloj-despertador",
+        "precio" : 3900,
+        "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png",
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("6224f7be8d4127e45a65e8fe"),
+        "nombre" : "Tijera",
+        "precio" : 1900,
+        "foto_url" : "https://cdn4.iconfinder.com/data/icons/to-cool-for-school/512/opened-scissor-128.png",
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("622531f2defd56221ba90928"),
+        "nombre" : "paleta de acuarelas",
+        "precio" : 1364,
+        "foto_url" : "https://cdn0.iconfinder.com/data/icons/education-794/512/Paint-128.png",
+        "stock" : 100
+}
+
+### **PUNTO 6)** Crear usuario de lectura
+
+> use admin
+switched to db admin
+
+> db.createUser({user: "pepe", pwd: "asd456", roles: [{ role: "read", db: "ecommerce" }]})
+Successfully added user: {
+        "user" : "pepe",
+        "roles" : [
+                {
+                        "role" : "read",
+                        "db" : "ecommerce"
+                }
+        ]
+}
+
+C:\Users\Diego>mongod --dbpath "c:\data\db" --auth
+
+C:\Users\Diego>mongo -u pepe
+MongoDB shell version v5.0.6
+Enter password:
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("537ac047-b019-45d1-87bd-ae297be4be2b") }
+MongoDB server version: 5.0.6
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+>
+
+> show dbs
+ecommerce  0.000GB
+
+> use ecommerce
+switched to db ecommerce
+> db.productos.find()
+{ "_id" : ObjectId("6224f7be8d4127e45a65e8f6"), "nombre" : "mochila", "precio" : 3559, "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/bag-pack-container-school-128.png", "stock" : 100 }
+{ "_id" : ObjectId("6224f7be8d4127e45a65e8f8"), "nombre" : "calculadora", "precio" : 1590, "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-128.png", "stock" : 100 }
+{ "_id" : ObjectId("6224f7be8d4127e45a65e8f9"), "nombre" : "escuadra", "precio" : 1890, "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png", "stock" : 100 }
+{ "_id" : ObjectId("6224f7be8d4127e45a65e8fa"), "nombre" : "pizarron", "precio" : 4990, "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/board-math-class-school-128.png", "stock" : 0 }
+{ "_id" : ObjectId("6224f7be8d4127e45a65e8fb"), "nombre" : "regla", "precio" : 3300, "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-128.png", "stock" : 100 }
+{ "_id" : ObjectId("6224f7be8d4127e45a65e8fc"), "nombre" : "cuaderno", "precio" : 2800, "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/book-note-paper-school-128.png", "stock" : 100 }
+{ "_id" : ObjectId("6224f7be8d4127e45a65e8fd"), "nombre" : "reloj-despertador", "precio" : 3900, "foto_url" : "https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png", "stock" : 100 }
+{ "_id" : ObjectId("6224f7be8d4127e45a65e8fe"), "nombre" : "Tijera", "precio" : 1900, "foto_url" : "https://cdn4.iconfinder.com/data/icons/to-cool-for-school/512/opened-scissor-128.png", "stock" : 100 }
+{ "_id" : ObjectId("622531f2defd56221ba90928"), "nombre" : "paleta de acuarelas", "precio" : 1364, "foto_url" : "https://cdn0.iconfinder.com/data/icons/education-794/512/Paint-128.png", "stock" : 100 }
+>
+
+> db.productos.insert({nombre: "anotador", precio: 190, foto_url: "https://cdn3.iconfinder.com/data/icons/education-209/64/paper-clip-academic-note-exam-128.png"})
+WriteCommandError({
+        "ok" : 0,
+        "errmsg" : "not authorized on ecommerce to execute command { insert: \"productos\", ordered: true, lsid: { id: UUID(\"537ac047-b019-45d1-87bd-ae297be4be2b\") }, $db: \"ecommerce\" }",
+        "code" : 13,
+        "codeName" : "Unauthorized"
+})
+>
+
+
+
+
+
+
+

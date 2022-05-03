@@ -1,0 +1,61 @@
+<div class="container bg-secondary bg-opacity-75 bg-gradient rounded mt-3">
+    <div class="container">
+
+        <!-- Formulario -->
+        <h1 style="color: blue">Ingrese un producto</h1>
+        <form
+        onsubmit="return enviarProducto()"
+        class="row g-1 align-items-center mt-4"
+        >
+        <div class="col-12">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input
+            type="text"
+            class="form-control w-75"
+            id="nombre"
+            name=""
+            value="Mochila"
+            required
+            />
+        </div>
+        <div class="col-12">
+            <label for="precio" class="form-label">Precio</label>
+            <input
+            type="text"
+            class="form-control w-75"
+            id="precio"
+            name=""
+            value="1234.12"
+            required
+            />
+        </div>
+        <div class="col-12">
+            <label for="foto_url" class="form-label">URL de la Foto</label>
+            <div class="input-group w-75">
+            <span class="input-group-text" id="inputGroupPrepend2">URL</span>
+            <input
+                type="text"
+                class="form-control"
+                id="foto_url"
+                aria-describedby="inputGroupPrepend2"
+                name=""
+                value="https://cdn4.iconfinder.com/data/icons/to-cool-for-school/512/backpack-256.png"
+                required
+            />
+            </div>
+        </div>
+        <div class="col-12 mt-4">
+            <button class="btn btn-primary" type="submit">Enviar</button>
+            <button class="btn btn-danger" type="button" onClick="eliminarProductos()">Borrar Productos</button>
+        </div>
+        </form>
+
+        <!-- Lista de productos -->
+        <h2 style="margin-top: 20px; color: crimson">Lista de Productos</h2>
+        <div
+        id="tabla"
+        style="height: 300px; width: auto; overflow-y: scroll"
+        ></div>
+    
+    </div>
+</div>

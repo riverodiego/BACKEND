@@ -1,0 +1,112 @@
+<div class="container mt-3">
+  <div class="jumbotron">
+    <div class="container mt-3">
+      <h1 class="alert alert-success">
+          Bienvenido, {{nombre}}
+              <button class="btn btn-warning float-right mt-2" onclick="location.href='/logout'">
+                  Desloguear
+              </button>
+      </h1>
+  </div>
+    <!-- Formulario -->
+    <h1 style="color: blue">Ingrese un producto</h1>
+    <form
+      onsubmit="return enviarProducto()"
+      class="row g-1 align-items-center mt-4"
+    >
+      <div class="col-12">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input
+          type="text"
+          class="form-control w-75"
+          id="nombre"
+          name=""
+          value="Mochila"
+          required
+        />
+      </div>
+      <div class="col-12">
+        <label for="precio" class="form-label">Precio</label>
+        <input
+          type="text"
+          class="form-control w-75"
+          id="precio"
+          name=""
+          value="1234.12"
+          required
+        />
+      </div>
+      <div class="col-12">
+        <label for="foto_url" class="form-label">URL de la Foto</label>
+        <div class="input-group w-75">
+          <span class="input-group-text" id="inputGroupPrepend2">URL</span>
+          <input
+            type="text"
+            class="form-control"
+            id="foto_url"
+            aria-describedby="inputGroupPrepend2"
+            name=""
+            value="https://cdn4.iconfinder.com/data/icons/to-cool-for-school/512/backpack-256.png"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-12 mt-4">
+        <button class="btn btn-primary" type="submit">Enviar</button>
+        <button class="btn btn-danger" type="button" onClick="eliminarProductos()">Borrar Productos</button>
+      </div>
+    </form>
+    <!-- Lista de productos -->
+    <h2 style="margin-top: 20px; color: crimson">Lista de Productos</h2>
+    <div
+      id="tabla"
+      style="height: 300px; width: auto; overflow-y: scroll"
+    ></div>
+    <!-- Mensajeria de chat-->
+    <h2 style="margin-top: 20px; color: green">Centro de Mensajes</h2>
+    <h4 id="subtituloPorcentaje"></h4>
+      <form
+      onsubmit="return enviarMensaje()"
+      class="row g-1 align-items-center mt-4"
+    >
+      <div class="col-12">
+        <label for="id_email" class="form-label">Email</label>
+        <input type="email" class="form-control w-75" id="id_email" name="" value="" required/>
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="" class="form-control w-75" id="nombre" name="" value="" required/>
+        <label for="apellido" class="form-label">Apellido</label>
+        <input type="" class="form-control w-75" id="apellido" name="" value="" required/>
+        <label for="edad" class="form-label">Edad</label>
+        <input type="" class="form-control w-75" id="edad" name="" value="" required/>
+        <label for="alias" class="form-label">Alias</label>
+        <input type="" class="form-control w-75" id="alias" name="" value="" required/>
+        <label for="avatar" class="form-label">Avatar</label>
+        <input type="" class="form-control w-75" id="avatar" name="" value="" required/>
+      </div>
+      <div class="col-12">
+        <label for="text" class="form-label">Mensaje</label>
+        <input
+          type="text"
+          class="form-control w-75"
+          id="text"
+          name=""
+          value=""
+          required
+        />
+      </div>
+      </div>
+      <div class="col-12 mt-4">
+        <button class="btn btn-primary" type="submit">Enviar</button>
+        <button class="btn btn-danger" type="button" onClick="eliminarMensajes()">Borrar chat</button>
+      </div>
+    </form>
+    <div
+    id="mensajeria"
+    style="margin-top: 20px; height: 300px; width: auto; overflow-y: scroll"
+  ></div>
+    </div>
+  </div>
+</div>
+<script src="/js/deNormalizarMensajes.js"></script>
+<script src="/js/main.js"></script>
+

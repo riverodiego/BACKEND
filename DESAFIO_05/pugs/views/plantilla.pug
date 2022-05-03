@@ -1,0 +1,28 @@
+extends layouts 
+
+block plantilla 
+    h1="Vista de productos"
+    table(class="table table-striped table-hover")
+        thead
+            tr
+                th(scope="col") #
+                th(scope="col") Nombre
+                th(scope="col") Precio
+                th(scope="col") Foto
+        if productos.length === 0
+            table/
+            div(class="alert alert-info text-center" role="alert") No Hay Productos...
+        else 
+            tbody
+                each val, index in productos 
+                    tr 
+                        th(scope="row")=index 
+                        td=val.nombre 
+                        td="$ "+val.precio
+                        td
+                            img(srcset=val.foto_url width="50" height="60")
+    button(class="btn btn-primary" type="button")
+        a(href="/" class="text-reset text-decoration-none") Cargar productos
+    button(class="btn btn-danger" type="button")
+        a(href="/borrar" class="text-reset text-decoration-none") Borrar Productos 
+        

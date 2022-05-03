@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <title>HBS!</title>
+  </head>
+  <body class="container-fluid m-1">
+    <h1>Ingrese Producto</h1>
+    <form
+      action="/productos"
+      method="post"
+      class="row g-1 align-items-center mt-4"
+    >
+      <div class="col-12">
+        <label for="validationDefault01" class="form-label">Nombre</label>
+        <input
+          type="text"
+          class="form-control w-75"
+          id="validationDefault01"
+          name="nombre"
+          value="Mochila"
+          required
+        />
+      </div>
+      <div class="col-12">
+        <label for="validationDefault02" class="form-label">Precio</label>
+        <input
+          type="number"
+          class="form-control w-75"
+          id="validationDefault02"
+          name="precio"
+          value="1234.12"
+          required
+        />
+      </div>
+      <div class="col-12">
+        <label for="validationDefault03" class="form-label"
+          >URL de la Foto</label
+        >
+        <div class="input-group w-75">
+          <span class="input-group-text" id="inputGroupPrepend2">URL</span>
+          <input
+            type="text"
+            class="form-control"
+            id="validationDefault03"
+            aria-describedby="inputGroupPrepend2"
+            name="foto_url"
+            value="https://cdn4.iconfinder.com/data/icons/to-cool-for-school/512/backpack-256.png"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-12 mt-4">
+        <button class="btn btn-primary" type="submit">Enviar</button>
+        <button class="btn btn-success" type="button">
+          <a href="/productos" class="text-reset text-decoration-none"
+            >Mostrar productos</a
+          >
+        </button>
+        <button class="btn btn-danger" type="button">
+          <a href="/borrar" class="text-reset text-decoration-none"
+            >Borrar productos</a
+          >
+        </button>
+      </div>
+    </form>
+  </body>
+</html>

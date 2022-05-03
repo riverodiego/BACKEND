@@ -1,0 +1,66 @@
+/* ---------------------- Rutas Test ---------------------- */
+app.get("/api/productos-test", (req, res) => {
+    let productos = mockItems.random();
+    res.render('lista', {productos})
+});
+
+/* ------------------- Rutas de Logueo ---------------------- */
+app.get("/", (req, res) => {
+    const nombre = req.session.nombre;
+    if (nombre) {
+        res.render("home", {nombre});
+    } else {
+        res.redirect("/login");
+    }
+});
+
+app.get("/login", (req, res) => {
+        res.render("login");
+});
+
+app.post('/login', (req, res)=>{
+        const {nombre} = req.body
+        req.session.nombre = nombre
+        res.redirect('/')
+})
+
+app.get("/logout", (req, res) => {
+    const nombre = req.session.nombre;
+    console.log("nombre logout ", nombre);
+    req.session.destroy((err) => {
+        if (!err) {
+            res.render("logout", {nombre});
+        }else{ res.send({ status: "Error al desloguear", body: err })};
+    });
+});
+
+/* ---------------------- WebSocket ---------------------- */
+let productos = [
+    {
+        nombre: 'Tijera',
+        precio: '125.33',
+        foto_url: 'https://cdn4.iconfinder.com/data/icons/to-cool-for-school/512/opened-scissor-256.png'
+    },
+    {
+        nombre: 'Lapiz',
+        precio: '20.99',
+        foto_url: 'https://cdn4.iconfinder.com/data/icons/to-cool-for-school/512/pencil-128.png'
+    }
+];
+
+(async () => {await productosApi.save(productos)})();
+
+/ ESTEBA EN SERVER.JS /
+
+const MensajeDAOFirebase = require("./src/DAOs/mensajeDAOFirebase.js")
+const { optionsMariaDB } = require('./src/utils/optionsMariaDB');
+
+const { deNormalizarMensajes } = require("./src/utils/normalizarMensajes.js");
+
+const productosApi = new Container(optionsMariaDB, tablaProductos);
+const mensajeDAO = new MensajeDAOFirebase(tablaMensajes)
+
+const tablaProductos = "productos";
+const tablaMensajes = "mensajes";
+
+const mockItems = new ProductsMock();

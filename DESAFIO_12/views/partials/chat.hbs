@@ -1,0 +1,30 @@
+<!-- Mensajeria de chat-->
+<h2 style="margin-top: 20px; color: green">Centro de Mensajes</h2>
+<h4 id="subtituloPorcentaje"></h4>
+<form onsubmit="return enviarMensaje()" class="row g-1 align-items-center mt-4">
+    <div class="col-12">
+        <label for="id_email" class="form-label">Email</label>
+        <input type="email" class="form-control w-75" id="id_email" name="" value="" required/>
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="" class="form-control w-75" id="nombre" name="" value="" required/>
+        <label for="apellido" class="form-label">Apellido</label>
+        <input type="" class="form-control w-75" id="apellido" name="" value="" required/>
+        <label for="edad" class="form-label">Edad</label>
+        <input type="" class="form-control w-75" id="edad" name="" value="" required/>
+        <label for="alias" class="form-label">Alias</label>
+        <input type="" class="form-control w-75" id="alias" name="" value="" required/>
+        <label for="avatar" class="form-label">Avatar</label>
+        <input type="" class="form-control w-75" id="avatar" name="" value="" required/>
+    </div>
+    <div class="col-12">
+        <label for="text" class="form-label">Mensaje</label>
+        <input type="text" class="form-control w-75" id="text" name="" value="" required/>
+    </div>
+    </div>
+    <div class="col-12 mt-4">
+        <button class="btn btn-primary" type="submit">Enviar</button>
+        <button class="btn btn-danger" type="button" onClick="eliminarMensajes()">Borrar chat</button>
+    </div>
+</form>
+<div id="mensajeria" style="margin-top: 20px; height: 300px; width: auto; overflow-y: scroll">
+</div>
